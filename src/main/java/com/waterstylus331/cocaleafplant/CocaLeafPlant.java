@@ -1,6 +1,7 @@
 package com.waterstylus331.cocaleafplant;
 
 import com.mojang.logging.LogUtils;
+import com.waterstylus331.cocaleafplant.blocks.ModBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,6 +29,8 @@ public class CocaLeafPlant
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+
+        ModBlocks.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

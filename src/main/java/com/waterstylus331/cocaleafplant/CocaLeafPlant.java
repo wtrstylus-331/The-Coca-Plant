@@ -22,6 +22,7 @@ public class CocaLeafPlant
     public static final String MODID = "cocaleafplant";
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    // Main
     public CocaLeafPlant()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

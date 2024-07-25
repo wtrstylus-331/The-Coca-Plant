@@ -2,6 +2,7 @@ package com.waterstylus331.cocaleafplant;
 
 import com.mojang.logging.LogUtils;
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
+import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;

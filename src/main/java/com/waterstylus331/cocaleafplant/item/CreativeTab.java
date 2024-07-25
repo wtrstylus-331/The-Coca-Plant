@@ -1,6 +1,6 @@
-package com.waterstylus331.cocaleafplant;
+package com.waterstylus331.cocaleafplant.item;
 
-import com.waterstylus331.cocaleafplant.item.ModItems;
+import com.waterstylus331.cocaleafplant.CocaLeafPlant;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;

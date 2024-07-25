@@ -7,6 +7,8 @@ import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -33,6 +35,7 @@ public class CocaLeafPlant
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::addCreative);
 
         CreativeTab.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -49,7 +52,16 @@ public class CocaLeafPlant
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.PESTLE_OBJECT.get());
+        }
 
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.COCA_SEEDS.get());
+            event.accept(ModItems.COCA_LEAF.get());
+            event.accept(ModItems.DRIED_COCA_LEAF.get());
+            event.accept(ModItems.BURNT_COCA_LEAF.get());
+        }
     }
 
     @SubscribeEvent

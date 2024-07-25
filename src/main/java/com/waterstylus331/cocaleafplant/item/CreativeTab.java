@@ -18,6 +18,7 @@ public class CreativeTab {
                     .displayItems((pParameter, pOutput) -> {
                         pOutput.accept(ModItems.COCA_SEEDS.get());
                         pOutput.accept(ModItems.COCA_LEAF.get());
+                        pOutput.accept(ModItems.DRIED_COCA_LEAF.get());
                     })
                     .build());
 

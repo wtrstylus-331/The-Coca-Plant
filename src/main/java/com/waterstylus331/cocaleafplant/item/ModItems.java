@@ -21,6 +21,9 @@ public class ModItems {
     public static final RegistryObject<Item> COCA_LEAF = ITEMS.register("coca_leaf",
             () -> new Item(new Item.Properties().stacksTo(64)));
 
+    public static final RegistryObject<Item> DRIED_COCA_LEAF = ITEMS.register("dried_coca_leaf",
+            () -> new Item(new Item.Properties().stacksTo(64)));
+
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }

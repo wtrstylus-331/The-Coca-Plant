@@ -16,7 +16,7 @@
               "type": "minecraft:item",
               "conditions": [
                 {
-                  "block": "cocaleafplant:coca_plant",
+                  "block": "cocaleafplant:coca_crop",
                   "condition": "minecraft:block_state_property",
                   "properties": {
                     "age": "5"
@@ -38,7 +38,7 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
-          "block": "cocaleafplant:coca_plant",
+          "block": "cocaleafplant:coca_crop",
           "condition": "minecraft:block_state_property",
           "properties": {
             "age": "5"
@@ -65,5 +65,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cocaleafplant:blocks/coca_plant"
+  "random_sequence": "cocaleafplant:blocks/coca_crop"
 }

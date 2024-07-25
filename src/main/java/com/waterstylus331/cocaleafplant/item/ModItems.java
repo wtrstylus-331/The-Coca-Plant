@@ -15,6 +15,9 @@ public class ModItems {
     public static final RegistryObject<Item> TAB_ICON = ITEMS.register("tab_icon",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> PESTLE_OBJECT = ITEMS.register("pestle",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> COCA_SEEDS = ITEMS.register("coca_seeds",
             () -> new ItemNameBlockItem(ModBlocks.COCA_PLANT.get(), new Item.Properties()));
 

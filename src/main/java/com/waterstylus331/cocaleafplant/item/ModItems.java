@@ -1,4 +1,4 @@
-package com.waterstylus331.cocaleafplant.items;
+package com.waterstylus331.cocaleafplant.item;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
 import net.minecraft.world.item.Item;

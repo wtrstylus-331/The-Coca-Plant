@@ -1,8 +1,8 @@
 package com.waterstylus331.cocaleafplant;
 
 import com.mojang.logging.LogUtils;
-import com.waterstylus331.cocaleafplant.blocks.ModBlocks;
-import com.waterstylus331.cocaleafplant.items.ModItems;
+import com.waterstylus331.cocaleafplant.block.ModBlocks;
+import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;

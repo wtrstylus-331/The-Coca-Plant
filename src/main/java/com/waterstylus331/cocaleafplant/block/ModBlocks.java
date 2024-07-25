@@ -1,4 +1,4 @@
-package com.waterstylus331.cocaleafplant.blocks;
+package com.waterstylus331.cocaleafplant.block;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
 import net.minecraft.world.level.block.Block;

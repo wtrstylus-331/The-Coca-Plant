@@ -15,6 +15,9 @@ public class CreativeTab {
     public static final RegistryObject<CreativeModeTab> MAIN_TAB = TABS.register("creative_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TAB_ICON.get()))
                     .title(Component.translatable("creativetab.creative_tab"))
+                    .displayItems((pParamters, pOutput) -> {
+                        pOutput.accept(ModItems.TAB_ICON.get());
+                    })
                     .build());
 
     public static void register(IEventBus bus) {

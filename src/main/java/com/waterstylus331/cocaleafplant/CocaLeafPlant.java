@@ -31,6 +31,7 @@ public class CocaLeafPlant
 
         modEventBus.addListener(this::commonSetup);
 
+        CreativeTab.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
 

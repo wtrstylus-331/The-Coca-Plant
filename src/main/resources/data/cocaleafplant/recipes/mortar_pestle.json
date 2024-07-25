@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "mortar_pestle",
+  "pattern": [
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cobblestone"
+    },
+    "X": {
+      "item": "cocaleafplant:pestle"
+    }
+  },
+  "result": {
+    "item": "cocaleafplant:mortar_pestle",
+    "count": 1
+  }
+}

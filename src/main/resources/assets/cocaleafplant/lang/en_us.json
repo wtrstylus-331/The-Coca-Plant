@@ -1,5 +1,8 @@
 {
   "item.cocaleafplant.tab_icon": "Icon",
 
+  "item.cocaleafplant.coca_seeds": "Coca Seeds",
+  "item.cocaleafplant.coca_leaf": "Coca Leaf",
+
   "itemGroup.mod_tab": "The Coca Plant"
 }

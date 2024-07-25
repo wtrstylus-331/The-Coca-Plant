@@ -5,6 +5,8 @@ import com.waterstylus331.cocaleafplant.block.ModBlocks;
 import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -66,6 +68,8 @@ public class CocaLeafPlant
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+            ItemBlockRenderTypes.setRenderLayer(ModBlocks.COCA_PLANT.get(), RenderType.cutout());
         }
     }
 }

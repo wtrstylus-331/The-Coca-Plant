@@ -40,7 +40,6 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 70;
-    private int itemsProduced = 0;
 
     public MortarPestleBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(BlockEntities.MORTAR_PESTLE_BLOCK_ENTITY.get(), blockPos, blockState);
@@ -50,7 +49,6 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                 return switch (i) {
                     case 0 -> MortarPestleBlockEntity.this.progress;
                     case 1 -> MortarPestleBlockEntity.this.maxProgress;
-                    case 2 -> MortarPestleBlockEntity.this.itemsProduced;
                     default -> 0;
                 };
             }
@@ -60,13 +58,12 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                 switch (i) {
                     case 0 -> MortarPestleBlockEntity.this.progress = value;
                     case 1 -> MortarPestleBlockEntity.this.maxProgress = value;
-                    case 2 -> MortarPestleBlockEntity.this.itemsProduced = value;
                 }
             }
 
             @Override
             public int getCount() {
-                return 3;
+                return 2;
             }
         };
     }
@@ -163,16 +160,11 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
         ItemStack result = new ItemStack(ModItems.COCA_PASTE.get(), 1);
         this.itemStackHandler.extractItem(INPUT, 1, false);
 
-        if (stackHasBeenProduced()) {
-            this.itemStackHandler.extractItem(BUCKET_INPUT, 1, false);
-            this.itemStackHandler.setStackInSlot(BUCKET_INPUT, new ItemStack(Items.BUCKET));
-            resetItemsProduced();
-        }
+        this.itemStackHandler.extractItem(BUCKET_INPUT, 1, false);
+        this.itemStackHandler.setStackInSlot(BUCKET_INPUT, new ItemStack(Items.BUCKET));
 
         this.itemStackHandler.setStackInSlot(OUTPUT, new ItemStack(result.getItem(),
                 this.itemStackHandler.getStackInSlot(OUTPUT).getCount() + result.getCount()));
-
-        increaseItemsProduced();
     }
 
     private void increaseCraftingProgress() {
@@ -185,17 +177,5 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     private void resetProgress() {
         progress = 0;
-    }
-
-    private void increaseItemsProduced() {
-        itemsProduced++;
-    }
-
-    private boolean stackHasBeenProduced() {
-        return itemsProduced >= 64;
-    }
-
-    private void resetItemsProduced() {
-        itemsProduced = 0;
     }
 }

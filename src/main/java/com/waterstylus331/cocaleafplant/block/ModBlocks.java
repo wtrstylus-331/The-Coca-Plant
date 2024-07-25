@@ -15,6 +15,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> COCA_PLANT = BLOCKS.register("coca_crop",
             () -> new CocaPlantBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
 
+    public static final RegistryObject<Block> MORTAR_PESTLE = BLOCKS.register("mortar_pestle",
+            () -> new MortarPestleBlock(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).noOcclusion()));
+
     public static void register(IEventBus bus) {
         BLOCKS.register(bus);
     }

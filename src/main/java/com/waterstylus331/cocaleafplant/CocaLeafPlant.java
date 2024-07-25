@@ -2,6 +2,7 @@ package com.waterstylus331.cocaleafplant;
 
 import com.mojang.logging.LogUtils;
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
+import com.waterstylus331.cocaleafplant.block.entity.BlockEntities;
 import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.client.Minecraft;
@@ -40,6 +41,7 @@ public class CocaLeafPlant
         CreativeTab.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        BlockEntities.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -61,6 +63,7 @@ public class CocaLeafPlant
             event.accept(ModItems.COCA_LEAF.get());
             event.accept(ModItems.DRIED_COCA_LEAF.get());
             event.accept(ModItems.BURNT_COCA_LEAF.get());
+            event.accept(ModItems.COCA_PASTE.get());
         }
     }
 

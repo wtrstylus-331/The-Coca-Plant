@@ -30,6 +30,9 @@ public class ModItems {
     public static final RegistryObject<Item> BURNT_COCA_LEAF = ITEMS.register("burnt_coca_leaf",
             () -> new Item(new Item.Properties().stacksTo(64)));
 
+    public static final RegistryObject<Item> COCA_PASTE = ITEMS.register("coca_paste",
+            () -> new Item(new Item.Properties().stacksTo(64)));
+
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }

@@ -20,6 +20,7 @@ public class CreativeTab {
                         pOutput.accept(ModItems.COCA_LEAF.get());
                         pOutput.accept(ModItems.DRIED_COCA_LEAF.get());
                         pOutput.accept(ModItems.BURNT_COCA_LEAF.get());
+                        pOutput.accept(ModItems.COCA_PASTE.get());
                         pOutput.accept(ModItems.PESTLE_OBJECT.get());
                     })
                     .build());

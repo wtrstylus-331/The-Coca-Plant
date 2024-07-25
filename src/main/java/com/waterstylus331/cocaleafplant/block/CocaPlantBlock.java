@@ -1,5 +1,6 @@
 package com.waterstylus331.cocaleafplant.block;
 
+import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
@@ -18,7 +19,7 @@ public class CocaPlantBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return super.getBaseSeedId();
+        return ModItems.COCA_SEEDS.get();
     }
 
     @Override

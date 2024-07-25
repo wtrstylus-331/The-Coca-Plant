@@ -16,7 +16,8 @@ public class CreativeTab {
             () -> CreativeModeTab.builder().title(Component.translatable("itemGroup.mod_tab"))
                     .icon(() -> new ItemStack(ModItems.TAB_ICON.get()))
                     .displayItems((pParameter, pOutput) -> {
-
+                        pOutput.accept(ModItems.COCA_SEEDS.get());
+                        pOutput.accept(ModItems.COCA_LEAF.get());
                     })
                     .build());
 

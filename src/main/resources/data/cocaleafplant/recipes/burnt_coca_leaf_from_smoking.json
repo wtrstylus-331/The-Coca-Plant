@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smoking",
+  "category": "misc",
+  "cookingtime": 100,
+  "group": "coca_leaf",
+  "ingredient": {
+    "item": "cocaleafplant:coca_leaf"
+  },
+  "result": "cocaleafplant:burnt_coca_leaf"
+}

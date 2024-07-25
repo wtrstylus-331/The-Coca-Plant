@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 400,
+  "experience": 0.15,
+  "ingredient": {
+    "item": "cocaleafplant:coca_leaf"
+  },
+  "result": "cocaleafplant:dried_coca_leaf"
+}

@@ -23,6 +23,7 @@ public class CreativeTab {
                         pOutput.accept(ModItems.BURNT_COCA_LEAF.get());
                         pOutput.accept(ModItems.COCA_PASTE.get());
                         pOutput.accept(ModItems.PESTLE_OBJECT.get());
+
                         pOutput.accept(ModBlocks.MORTAR_PESTLE.get());
                     })
                     .build());

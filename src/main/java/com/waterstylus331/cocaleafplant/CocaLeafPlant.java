@@ -39,7 +39,6 @@ public class CocaLeafPlant
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::addCreative);
 
         CreativeTab.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -48,6 +47,7 @@ public class CocaLeafPlant
         ModMenuTypes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        modEventBus.addListener(this::addCreative);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

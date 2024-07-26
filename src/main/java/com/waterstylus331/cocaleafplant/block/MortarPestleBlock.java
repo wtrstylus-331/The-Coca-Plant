@@ -23,7 +23,7 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class MortarPestleBlock extends BaseEntityBlock {
-    public static final VoxelShape shape = Block.box(0,0,0,6,4,6);
+    public static final VoxelShape shape = Block.box(0,0,0,16,16,16);
 
     public MortarPestleBlock(Properties properties) {
         super(properties);

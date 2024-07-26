@@ -13,8 +13,8 @@ public class MortarPestleScreen extends AbstractContainerScreen<MortarPestleMenu
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(CocaLeafPlant.MODID, "textures/gui/mortar_pestle_gui.png");
 
-    public MortarPestleScreen(MortarPestleMenu p_97741_, Inventory p_97742_, Component p_97743_) {
-        super(p_97741_, p_97742_, p_97743_);
+    public MortarPestleScreen(MortarPestleMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+        super(pMenu, pPlayerInventory, pTitle);
     }
 
     @Override

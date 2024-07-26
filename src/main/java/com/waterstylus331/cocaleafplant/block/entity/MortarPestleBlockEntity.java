@@ -18,7 +18,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -29,24 +28,24 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemStackHandler = new ItemStackHandler(3);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(3);
 
-    private static final int INPUT = 0;
-    private static final int BUCKET_INPUT = 1;
-    private static final int OUTPUT = 2;
+    private static final int INPUT_SLOT = 0;
+    private static final int BUCKET_SLOT = 1;
+    private static final int OUTPUT_SLOT = 2;
 
-    private LazyOptional<IItemHandler> itemHandlerLazyOptional = LazyOptional.empty();
+    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 70;
+    private int maxProgress = 78;
 
-    public MortarPestleBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(BlockEntities.MORTAR_PESTLE_BLOCK_ENTITY.get(), blockPos, blockState);
+    public MortarPestleBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.MORTAR_PESTLE_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
-            public int get(int i) {
-                return switch (i) {
+            public int get(int pIndex) {
+                return switch (pIndex) {
                     case 0 -> MortarPestleBlockEntity.this.progress;
                     case 1 -> MortarPestleBlockEntity.this.maxProgress;
                     default -> 0;
@@ -54,10 +53,10 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
             }
 
             @Override
-            public void set(int i, int value) {
-                switch (i) {
-                    case 0 -> MortarPestleBlockEntity.this.progress = value;
-                    case 1 -> MortarPestleBlockEntity.this.maxProgress = value;
+            public void set(int pIndex, int pValue) {
+                switch (pIndex) {
+                    case 0 -> MortarPestleBlockEntity.this.progress = pValue;
+                    case 1 -> MortarPestleBlockEntity.this.maxProgress = pValue;
                 }
             }
 
@@ -70,32 +69,31 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            return itemHandlerLazyOptional.cast();
+        if(cap == ForgeCapabilities.ITEM_HANDLER) {
+            return lazyItemHandler.cast();
         }
+
         return super.getCapability(cap, side);
     }
 
     @Override
     public void onLoad() {
         super.onLoad();
-        itemHandlerLazyOptional = LazyOptional.of(() -> itemStackHandler);
+        lazyItemHandler = LazyOptional.of(() -> itemHandler);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
-        itemHandlerLazyOptional.invalidate();
+        lazyItemHandler.invalidate();
     }
 
     public void drops() {
-        SimpleContainer inv = new SimpleContainer(itemStackHandler.getSlots());
-
-        for (int i = 0; i < itemStackHandler.getSlots(); i++) {
-            inv.setItem(i, itemStackHandler.getStackInSlot(i));
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for(int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
         }
-
-        Containers.dropContents(this.level, this.worldPosition, inv);
+        Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
     @Override
@@ -105,13 +103,13 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new MortarPestleMenu(i, inventory, this, this.data);
+    public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        return new MortarPestleMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", itemStackHandler.serializeNBT());
+        pTag.put("inventory", itemHandler.serializeNBT());
         pTag.putInt("mortar_pestle.progress", progress);
 
         super.saveAdditional(pTag);
@@ -120,14 +118,14 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        itemStackHandler.deserializeNBT(pTag.getCompound("inventory"));
+        itemHandler.deserializeNBT(pTag.getCompound("inventory"));
         progress = pTag.getInt("mortar_pestle.progress");
     }
 
-    public void tick(Level level1, BlockPos pos, BlockState state1) {
+    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(hasRecipe()) {
             increaseCraftingProgress();
-            setChanged(level1, pos, state1);
+            setChanged(pLevel, pPos, pState);
 
             if(hasProgressFinished()) {
                 craftItem();
@@ -139,8 +137,8 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemStackHandler.getStackInSlot(INPUT).getItem() == ModItems.COCA_LEAF.get();
-        boolean hasWaterBucket = this.itemStackHandler.getStackInSlot(BUCKET_INPUT).getItem() == Items.WATER_BUCKET;
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.COCA_LEAF.get();
+        boolean hasWaterBucket = this.itemHandler.getStackInSlot(BUCKET_SLOT).getItem() == Items.WATER_BUCKET;
 
         ItemStack result = new ItemStack(ModItems.COCA_PASTE.get());
 
@@ -149,22 +147,22 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.itemStackHandler.getStackInSlot(OUTPUT).isEmpty() || this.itemStackHandler.getStackInSlot(OUTPUT).is(item);
+        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemStackHandler.getStackInSlot(OUTPUT).getCount() + count <= this.itemStackHandler.getStackInSlot(OUTPUT).getMaxStackSize();
+        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 
     private void craftItem() {
         ItemStack result = new ItemStack(ModItems.COCA_PASTE.get(), 1);
-        this.itemStackHandler.extractItem(INPUT, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
-        this.itemStackHandler.extractItem(BUCKET_INPUT, 1, false);
-        this.itemStackHandler.setStackInSlot(BUCKET_INPUT, new ItemStack(Items.BUCKET));
+        this.itemHandler.extractItem(BUCKET_SLOT, 1, false);
+        this.itemHandler.setStackInSlot(BUCKET_SLOT, new ItemStack(Items.BUCKET));
 
-        this.itemStackHandler.setStackInSlot(OUTPUT, new ItemStack(result.getItem(),
-                this.itemStackHandler.getStackInSlot(OUTPUT).getCount() + result.getCount()));
+        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
     }
 
     private void increaseCraftingProgress() {

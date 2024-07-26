@@ -2,17 +2,15 @@ package com.waterstylus331.cocaleafplant;
 
 import com.mojang.logging.LogUtils;
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
-import com.waterstylus331.cocaleafplant.block.entity.BlockEntities;
+import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
 import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.screen.ModMenuTypes;
 import com.waterstylus331.cocaleafplant.screen.MortarPestleScreen;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -23,6 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -43,7 +42,7 @@ public class CocaLeafPlant
         CreativeTab.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
-        BlockEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -58,6 +57,8 @@ public class CocaLeafPlant
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
+
+        /*
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.PESTLE_OBJECT.get());
         }
@@ -69,6 +70,8 @@ public class CocaLeafPlant
             event.accept(ModItems.BURNT_COCA_LEAF.get());
             event.accept(ModItems.COCA_PASTE.get());
         }
+
+         */
     }
 
     @SubscribeEvent

@@ -11,21 +11,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
-import org.jetbrains.annotations.Nullable;
 
 public class MortarPestleMenu extends AbstractContainerMenu {
     public final MortarPestleBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public MortarPestleMenu(int containerId, Inventory inv, FriendlyByteBuf buf) {
-        this(containerId, inv, inv.player.level().getBlockEntity(buf.readBlockPos()), new SimpleContainerData(3));
+    public MortarPestleMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public MortarPestleMenu(int containerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.MORTAR_PESTLE_MENU.get(), containerId);
+    public MortarPestleMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super(ModMenuTypes.MORTAR_PESTLE_MENU.get(), pContainerId);
         checkContainerSize(inv, 3);
-        blockEntity = ((MortarPestleBlockEntity)entity);
+        blockEntity = ((MortarPestleBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
 
@@ -104,9 +103,9 @@ public class MortarPestleMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                player, ModBlocks.MORTAR_PESTLE.get());
+                pPlayer, ModBlocks.MORTAR_AND_PESTLE.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

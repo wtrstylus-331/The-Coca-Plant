@@ -1,6 +1,6 @@
 package com.waterstylus331.cocaleafplant.block;
 
-import com.waterstylus331.cocaleafplant.block.entity.BlockEntities;
+import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
 import com.waterstylus331.cocaleafplant.block.entity.MortarPestleBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,62 +23,62 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class MortarPestleBlock extends BaseEntityBlock {
-    public static final VoxelShape shape = Block.box(0,0,0,16,16,16);
+    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
 
-    public MortarPestleBlock(Properties properties) {
-        super(properties);
+    public MortarPestleBlock(Properties pProperties) {
+        super(pProperties);
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext context) {
-        return shape;
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return SHAPE;
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState blockState) {
+    public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
 
     @Override
-    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState1, boolean b) {
-        if (blockState.getBlock() != blockState1.getBlock()) {
-            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        if (pState.getBlock() != pNewState.getBlock()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof MortarPestleBlockEntity) {
                 ((MortarPestleBlockEntity) blockEntity).drops();
             }
         }
 
-        super.onRemove(blockState, level, blockPos, blockState1, b);
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
     }
 
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!level.isClientSide()) {
-            BlockEntity entity = level.getBlockEntity(blockPos);
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof MortarPestleBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)player), (MortarPestleBlockEntity)entity, blockPos);
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (MortarPestleBlockEntity)entity, pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
 
-        return InteractionResult.sidedSuccess(level.isClientSide());
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new MortarPestleBlockEntity(blockPos, blockState);
+    public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
+        return new MortarPestleBlockEntity(pPos, pState);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> entityType) {
-        if (level.isClientSide()) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        if(pLevel.isClientSide()) {
             return null;
         }
 
-        return createTickerHelper(entityType, BlockEntities.MORTAR_PESTLE_BLOCK_ENTITY.get(),
-                (level1, pos, state1, blockEntity) -> blockEntity.tick(level1, pos, state1));
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.MORTAR_PESTLE_BE.get(),
+                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 }

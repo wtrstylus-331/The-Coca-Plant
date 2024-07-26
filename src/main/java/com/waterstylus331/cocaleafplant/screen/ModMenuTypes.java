@@ -17,11 +17,12 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<MortarPestleMenu>> MORTAR_PESTLE_MENU =
             registerMenuType("mortar_pestle_menu", MortarPestleMenu::new);
 
+
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
     }
 
-    public static void register(IEventBus bus) {
-        MENUS.register(bus);
+    public static void register(IEventBus eventBus) {
+        MENUS.register(eventBus);
     }
 }

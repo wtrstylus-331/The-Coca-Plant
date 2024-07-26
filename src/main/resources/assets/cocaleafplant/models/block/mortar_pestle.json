@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"1": "cocaleafplant:block/mortar_pestle_texture"
+		"1": "cocaleafplant:block/mortar_pestle_texture",
+		"particle": "cocaleafplant:block/mortar_pestle_texture"
 	},
 	"elements": [
 		{

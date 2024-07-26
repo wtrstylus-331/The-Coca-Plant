@@ -38,7 +38,8 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 78;
+    private int maxProgress = 32;
+    private int pasteProduced = 0;
 
     public MortarPestleBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.MORTAR_PESTLE_BE.get(), pPos, pBlockState);
@@ -48,6 +49,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                 return switch (pIndex) {
                     case 0 -> MortarPestleBlockEntity.this.progress;
                     case 1 -> MortarPestleBlockEntity.this.maxProgress;
+                    case 2 -> MortarPestleBlockEntity.this.pasteProduced;
                     default -> 0;
                 };
             }
@@ -57,12 +59,13 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                 switch (pIndex) {
                     case 0 -> MortarPestleBlockEntity.this.progress = pValue;
                     case 1 -> MortarPestleBlockEntity.this.maxProgress = pValue;
+                    case 2 -> MortarPestleBlockEntity.this.pasteProduced = pValue;
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 3;
             }
         };
     }
@@ -111,6 +114,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
         pTag.putInt("mortar_pestle.progress", progress);
+        pTag.putInt("mortar_pestle.pasteProduced", progress);
 
         super.saveAdditional(pTag);
     }
@@ -120,6 +124,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
         progress = pTag.getInt("mortar_pestle.progress");
+        pasteProduced = pTag.getInt("mortar_pestle.pasteProduced");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -137,7 +142,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.COCA_LEAF.get();
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.DRIED_COCA_LEAF.get();
         boolean hasWaterBucket = this.itemHandler.getStackInSlot(BUCKET_SLOT).getItem() == Items.WATER_BUCKET;
 
         ItemStack result = new ItemStack(ModItems.COCA_PASTE.get());
@@ -158,11 +163,16 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
         ItemStack result = new ItemStack(ModItems.COCA_PASTE.get(), 1);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
-        this.itemHandler.extractItem(BUCKET_SLOT, 1, false);
-        this.itemHandler.setStackInSlot(BUCKET_SLOT, new ItemStack(Items.BUCKET));
+        if (hasProducedMaxPaste()) {
+            this.itemHandler.extractItem(BUCKET_SLOT, 1, false);
+            this.itemHandler.setStackInSlot(BUCKET_SLOT, new ItemStack(Items.BUCKET));
+            resetPasteProduced();
+        }
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+
+        increasePasteProduced();
     }
 
     private void increaseCraftingProgress() {
@@ -175,5 +185,17 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     private void resetProgress() {
         progress = 0;
+    }
+
+    private void increasePasteProduced() {
+        pasteProduced++;
+    }
+
+    private boolean hasProducedMaxPaste() {
+        return pasteProduced >= 31;
+    }
+
+    private void resetPasteProduced() {
+        pasteProduced = 0;
     }
 }

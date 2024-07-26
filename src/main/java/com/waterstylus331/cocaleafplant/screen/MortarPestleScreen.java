@@ -20,8 +20,6 @@ public class MortarPestleScreen extends AbstractContainerScreen<MortarPestleMenu
     @Override
     protected void init() {
         super.init();
-        this.inventoryLabelY = 10000;
-        this.titleLabelY = 10000;
     }
 
     @Override
@@ -39,7 +37,7 @@ public class MortarPestleScreen extends AbstractContainerScreen<MortarPestleMenu
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 92, y + 48, 176, 0, menu.getScaledProgress(), 8);
+            guiGraphics.blit(TEXTURE, x + 92, y + 45, 176, 0, menu.getScaledProgress(), 8);
         }
     }
 

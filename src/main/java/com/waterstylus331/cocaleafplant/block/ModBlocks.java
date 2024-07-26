@@ -20,7 +20,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> COCA_PLANT = BLOCKS.register("coca_crop",
             () -> new CocaPlantBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
 
-    public static final RegistryObject<Block> MORTAR_AND_PESTLE = registerBlock("mortar_pestle",
+    public static final RegistryObject<Block> MORTAR_AND_PESTLE = registerBlock("mortar",
             () -> new MortarPestleBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

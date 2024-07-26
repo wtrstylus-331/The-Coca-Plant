@@ -45,6 +45,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     private int progress = 0;
     private int maxProgress = 32;
     private int pasteProduced = 0;
+    private int pestleUsed = 0;
 
     public MortarPestleBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.MORTAR_PESTLE_BE.get(), pPos, pBlockState);
@@ -55,6 +56,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                     case 0 -> MortarPestleBlockEntity.this.progress;
                     case 1 -> MortarPestleBlockEntity.this.maxProgress;
                     case 2 -> MortarPestleBlockEntity.this.pasteProduced;
+                    case 3 -> MortarPestleBlockEntity.this.pestleUsed;
                     default -> 0;
                 };
             }
@@ -65,6 +67,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                     case 0 -> MortarPestleBlockEntity.this.progress = pValue;
                     case 1 -> MortarPestleBlockEntity.this.maxProgress = pValue;
                     case 2 -> MortarPestleBlockEntity.this.pasteProduced = pValue;
+                    case 3 -> MortarPestleBlockEntity.this.pestleUsed = pValue;
                 }
             }
 
@@ -106,7 +109,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.cocaleafplant.mortar_pestle");
+        return Component.translatable("block.cocaleafplant.mortar");
     }
 
     @Nullable
@@ -118,8 +121,9 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.putInt("mortar_pestle.progress", progress);
-        pTag.putInt("mortar_pestle.pasteProduced", progress);
+        pTag.putInt("mortar.progress", progress);
+        pTag.putInt("mortar.pasteProduced", progress);
+        pTag.putInt("mortar.pestleUsed", pestleUsed);
 
         super.saveAdditional(pTag);
     }
@@ -128,12 +132,13 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("mortar_pestle.progress");
-        pasteProduced = pTag.getInt("mortar_pestle.pasteProduced");
+        progress = pTag.getInt("mortar.progress");
+        pasteProduced = pTag.getInt("mortar.pasteProduced");
+        pestleUsed = pTag.getInt("mortar.pestleUsed");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if(hasRecipe()) {
+        if(hasRecipe() && (pestleUsed == 1)) {
             increaseCraftingProgress();
             setChanged(pLevel, pPos, pState);
 
@@ -142,11 +147,17 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                 resetProgress();
 
                 pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(),
-                        ModSounds.MORTAR_PESTLE_USED.get(), SoundSource.BLOCKS, 1.7f, 1f, 0);
+                        ModSounds.MORTAR_PESTLE_USED.get(), SoundSource.BLOCKS, 2f, 1f, 0);
+                pestleUsed = 0;
             }
         } else {
             resetProgress();
+            pestleUsed = 0;
         }
+    }
+
+    public void usedPestle(Level pLevel, BlockPos pPos, BlockState pState) {
+        pestleUsed = 1;
     }
 
     private boolean hasRecipe() {

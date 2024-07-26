@@ -13,7 +13,7 @@ public class ModBlockEntities {
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, CocaLeafPlant.MODID);
 
     public static final RegistryObject<BlockEntityType<MortarPestleBlockEntity>> MORTAR_PESTLE_BE =
-            BLOCK_ENTITIES.register("mortar_pestle_be", () ->
+            BLOCK_ENTITIES.register("mortar_be", () ->
                     BlockEntityType.Builder.of(MortarPestleBlockEntity::new,
                             ModBlocks.MORTAR_AND_PESTLE.get()).build(null));
 

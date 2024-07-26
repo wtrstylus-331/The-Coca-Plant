@@ -1,8 +1,8 @@
 {
   "mortar_pestle_used": {
-    "subtitles": "sounds.cocaleafplant.mortar_pestle_used",
+    "subtitles": "sounds.cocaleafplant.mortar_used",
     "sounds": [
-      "cocaleafplant:mortar_pestle_used"
+      "cocaleafplant:mortar_used"
     ]
   }
 }

@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public class MortarPestleScreen extends AbstractContainerScreen<MortarPestleMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(CocaLeafPlant.MODID, "textures/gui/mortar_pestle_gui.png");
+            new ResourceLocation(CocaLeafPlant.MODID, "textures/gui/mortar_gui.png");
 
     public MortarPestleScreen(MortarPestleMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -37,7 +37,7 @@ public class MortarPestleScreen extends AbstractContainerScreen<MortarPestleMenu
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 92, y + 48, 176, 0, menu.getScaledProgress(), 8);
+            guiGraphics.blit(TEXTURE, x + 92, y + 36, 176, 0, menu.getScaledProgress(), 8);
         }
     }
 

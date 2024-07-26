@@ -15,7 +15,7 @@ public class ModMenuTypes {
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, CocaLeafPlant.MODID);
 
     public static final RegistryObject<MenuType<MortarPestleMenu>> MORTAR_PESTLE_MENU =
-            registerMenuType("mortar_pestle_menu", MortarPestleMenu::new);
+            registerMenuType("mortar_menu", MortarPestleMenu::new);
 
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

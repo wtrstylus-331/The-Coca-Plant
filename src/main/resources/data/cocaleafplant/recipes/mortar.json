@@ -3,19 +3,19 @@
   "category": "misc",
   "group": "mortar_pestle",
   "pattern": [
-    "#X#",
-    "###"
+    "# #",
+    "XXX"
   ],
   "key": {
     "#": {
       "item": "minecraft:cobblestone"
     },
     "X": {
-      "item": "cocaleafplant:pestle"
+      "item": "minecraft:stone"
     }
   },
   "result": {
-    "item": "cocaleafplant:mortar_pestle",
+    "item": "cocaleafplant:mortar",
     "count": 1
   }
 }

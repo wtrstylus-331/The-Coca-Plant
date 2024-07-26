@@ -32,9 +32,9 @@ public class MortarPestleMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 39, 42));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 62, 42));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 126, 42));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 39, 45));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 62, 45));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 126, 45));
         });
 
         addDataSlots(data);

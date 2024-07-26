@@ -7,6 +7,7 @@ import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.screen.ModMenuTypes;
 import com.waterstylus331.cocaleafplant.screen.MortarPestleScreen;
+import com.waterstylus331.cocaleafplant.sounds.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -44,6 +45,7 @@ public class CocaLeafPlant
         ModItems.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+        ModSounds.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -58,9 +60,9 @@ public class CocaLeafPlant
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
 
-        /*
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.PESTLE_OBJECT.get());
+            event.accept(ModBlocks.MORTAR_AND_PESTLE.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
@@ -70,8 +72,6 @@ public class CocaLeafPlant
             event.accept(ModItems.BURNT_COCA_LEAF.get());
             event.accept(ModItems.COCA_PASTE.get());
         }
-
-         */
     }
 
     @SubscribeEvent

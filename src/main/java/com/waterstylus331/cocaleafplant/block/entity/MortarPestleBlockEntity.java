@@ -2,10 +2,15 @@ package com.waterstylus331.cocaleafplant.block.entity;
 
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.screen.MortarPestleMenu;
+import com.waterstylus331.cocaleafplant.sounds.ModSounds;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -135,6 +140,9 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
             if(hasProgressFinished()) {
                 craftItem();
                 resetProgress();
+
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(),
+                        ModSounds.MORTAR_PESTLE_USED.get(), SoundSource.BLOCKS, 1.7f, 1f, 0);
             }
         } else {
             resetProgress();

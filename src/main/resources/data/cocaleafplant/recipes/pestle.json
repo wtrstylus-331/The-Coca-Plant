@@ -3,12 +3,15 @@
   "category": "misc",
   "group": "mortar_pestle",
   "pattern": [
-    "#",
-    " #"
+    "X",
+    "#"
   ],
   "key": {
     "#": {
       "item": "minecraft:stone"
+    },
+    "X": {
+      "item": "minecraft:cobblestone"
     }
   },
   "result": {

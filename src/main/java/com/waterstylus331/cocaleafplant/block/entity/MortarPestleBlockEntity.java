@@ -3,13 +3,10 @@ package com.waterstylus331.cocaleafplant.block.entity;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.screen.MortarPestleMenu;
 import com.waterstylus331.cocaleafplant.sounds.ModSounds;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -147,7 +144,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
                 resetProgress();
 
                 pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(),
-                        ModSounds.MORTAR_PESTLE_USED.get(), SoundSource.BLOCKS, 2f, 1f, 0);
+                        ModSounds.MORTAR_USED.get(), SoundSource.BLOCKS, 2f, 1f, 0);
                 pestleUsed = 0;
             }
         } else {
@@ -156,7 +153,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
         }
     }
 
-    public void usedPestle(Level pLevel, BlockPos pPos, BlockState pState) {
+    public void usedPestle() {
         pestleUsed = 1;
     }
 

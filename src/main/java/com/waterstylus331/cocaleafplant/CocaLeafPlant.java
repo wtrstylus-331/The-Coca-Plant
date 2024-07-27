@@ -59,7 +59,6 @@ public class CocaLeafPlant
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.PESTLE_OBJECT.get());
             event.accept(ModBlocks.MORTAR_AND_PESTLE.get());

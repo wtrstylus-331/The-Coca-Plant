@@ -63,7 +63,7 @@ public class MortarPestleBlock extends BaseEntityBlock {
             if (itemInHand.getItem() == ModItems.PESTLE_OBJECT.get()) {
                 MortarPestleBlockEntity thisEntity = (MortarPestleBlockEntity) entity;
 
-                thisEntity.usedPestle(pLevel, pPos, pState);
+                thisEntity.usedPestle();
             } else {
                 if (entity instanceof MortarPestleBlockEntity) {
                     NetworkHooks.openScreen(((ServerPlayer)pPlayer), (MortarPestleBlockEntity)entity, pPos);

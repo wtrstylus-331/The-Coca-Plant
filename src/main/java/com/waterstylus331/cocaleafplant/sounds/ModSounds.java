@@ -12,7 +12,7 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, CocaLeafPlant.MODID);
 
-    public static final RegistryObject<SoundEvent> MORTAR_PESTLE_USED = SOUND_EVENTS.register("mortar_used",
+    public static final RegistryObject<SoundEvent> MORTAR_USED = SOUND_EVENTS.register("mortar_used",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(CocaLeafPlant.MODID, "mortar_used")));
 
     public static void register(IEventBus bus) {

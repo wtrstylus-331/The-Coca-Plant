@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:campfire_cooking",
-  "category": "food",
-  "cookingtime": 500,
-  "ingredient": {
-    "item": "cocaleafplant:dried_coca_leaf"
-  },
-  "result": "cocaleafplant:burnt_coca_leaf"
-}

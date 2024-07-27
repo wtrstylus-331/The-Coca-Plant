@@ -2,6 +2,7 @@ package com.waterstylus331.cocaleafplant.item;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
+import net.minecraft.world.item.BottleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -16,7 +17,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> PESTLE_OBJECT = ITEMS.register("pestle",
-            () -> new Item(new Item.Properties().stacksTo(64)));
+            () -> new Item(new Item.Properties().stacksTo(64).defaultDurability(64).durability(64)));
 
     public static final RegistryObject<Item> COCA_SEEDS = ITEMS.register("coca_seeds",
             () -> new ItemNameBlockItem(ModBlocks.COCA_PLANT.get(), new Item.Properties()));

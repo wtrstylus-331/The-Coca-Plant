@@ -5,6 +5,7 @@ import com.waterstylus331.cocaleafplant.block.ModBlocks;
 import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
 import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
+import com.waterstylus331.cocaleafplant.recipe.ModRecipes;
 import com.waterstylus331.cocaleafplant.screen.ModMenuTypes;
 import com.waterstylus331.cocaleafplant.screen.MortarPestleScreen;
 import com.waterstylus331.cocaleafplant.sounds.ModSounds;
@@ -46,6 +47,7 @@ public class CocaLeafPlant
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

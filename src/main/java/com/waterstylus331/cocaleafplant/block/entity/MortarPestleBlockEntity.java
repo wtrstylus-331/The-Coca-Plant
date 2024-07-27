@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -40,7 +41,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 32;
+    private int maxProgress = 24;
     private int pasteProduced = 0;
     private int pestleUsed = 0;
 
@@ -70,7 +71,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
             @Override
             public int getCount() {
-                return 3;
+                return 4;
             }
         };
     }
@@ -140,7 +141,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
             setChanged(pLevel, pPos, pState);
 
             if(hasProgressFinished()) {
-                craftItem();
+                craftItem(pLevel, pPos);
                 resetProgress();
 
                 pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(),
@@ -175,13 +176,17 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
 
-    private void craftItem() {
+    private void craftItem(Level pLevel, BlockPos pPos) {
         ItemStack result = new ItemStack(ModItems.COCA_PASTE.get(), 1);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
         if (hasProducedMaxPaste()) {
             this.itemHandler.extractItem(BUCKET_SLOT, 1, false);
             this.itemHandler.setStackInSlot(BUCKET_SLOT, new ItemStack(Items.BUCKET));
+
+            pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(),
+                    SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1f, 1f, 0);
+
             resetPasteProduced();
         }
 

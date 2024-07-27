@@ -1,0 +1,15 @@
+{
+  "type": "cocaleafplant:mortar_and_pestle",
+  "ingredients": [
+    {
+      "item": "cocaleafplant:dried_coca_leaf"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "cocaleafplant:coca_paste"
+  }
+}

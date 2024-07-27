@@ -1,6 +1,7 @@
 package com.waterstylus331.cocaleafplant.block.entity;
 
 import com.waterstylus331.cocaleafplant.item.ModItems;
+import com.waterstylus331.cocaleafplant.recipe.MortarPestleRecipe;
 import com.waterstylus331.cocaleafplant.screen.MortarPestleMenu;
 import com.waterstylus331.cocaleafplant.sounds.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -30,6 +31,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
+
 public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3);
 
@@ -41,7 +44,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 24;
+    private int maxProgress = 12;
     private int pasteProduced = 0;
     private int pestleUsed = 0;
 
@@ -154,18 +157,45 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
         }
     }
 
+    public int getPestleStatus() {
+        return pestleUsed;
+    }
+
     public void usedPestle() {
         pestleUsed = 1;
     }
 
+    private Optional<MortarPestleRecipe> getRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for(int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+
+        return this.level.getRecipeManager().getRecipeFor(MortarPestleRecipe.Type.INSTANCE, inventory, level);
+    }
+
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.DRIED_COCA_LEAF.get();
-        boolean hasWaterBucket = this.itemHandler.getStackInSlot(BUCKET_SLOT).getItem() == Items.WATER_BUCKET;
+        Optional<MortarPestleRecipe> recipe = getRecipe();
 
-        ItemStack result = new ItemStack(ModItems.COCA_PASTE.get());
+        if (recipe.isEmpty()) {
+            return false;
+        }
 
-        return hasCraftingItem && hasWaterBucket &&
-                canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+    }
+
+    public boolean canCraftPestleUsed() {
+        Optional<MortarPestleRecipe> recipe = getRecipe();
+
+        if (recipe.isEmpty()) {
+            return false;
+        }
+
+        ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
+
+        return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
@@ -177,7 +207,8 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private void craftItem(Level pLevel, BlockPos pPos) {
-        ItemStack result = new ItemStack(ModItems.COCA_PASTE.get(), 1);
+        Optional<MortarPestleRecipe> recipe = getRecipe();
+        ItemStack result = recipe.get().getResultItem(null);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
         if (hasProducedMaxPaste()) {

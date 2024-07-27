@@ -5,6 +5,7 @@ import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
 import com.waterstylus331.cocaleafplant.block.entity.MortarPestleBlockEntity;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -62,6 +63,14 @@ public class MortarPestleBlock extends BaseEntityBlock {
 
             if (itemInHand.getItem() == ModItems.PESTLE_OBJECT.get()) {
                 MortarPestleBlockEntity thisEntity = (MortarPestleBlockEntity) entity;
+
+                if (itemInHand.isDamageableItem()) {
+                    if (thisEntity.getPestleStatus() == 0 && thisEntity.canCraftPestleUsed()) {
+                        itemInHand.hurtAndBreak(1, pPlayer, (player -> {
+                            player.broadcastBreakEvent(pHand);
+                        }));
+                    }
+                }
 
                 thisEntity.usedPestle();
             } else {

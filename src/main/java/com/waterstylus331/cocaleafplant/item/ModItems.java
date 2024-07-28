@@ -16,7 +16,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> PESTLE_OBJECT = ITEMS.register("pestle",
-            () -> new Item(new Item.Properties().stacksTo(64).defaultDurability(64).durability(64)));
+            () -> new Item(new Item.Properties().stacksTo(64).defaultDurability(128).durability(128)));
 
     public static final RegistryObject<Item> COCA_SEEDS = ITEMS.register("coca_seeds",
             () -> new ItemNameBlockItem(ModBlocks.COCA_PLANT.get(), new Item.Properties()));
@@ -35,6 +35,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> CANE_JUICE = ITEMS.register("cane_juice",
             () -> new CaneJuiceItem(new Item.Properties().stacksTo(64)));
+
+    public static final RegistryObject<Item> APPLE_JUICE = ITEMS.register("apple_juice",
+            () -> new AppleJuiceItem(new Item.Properties().stacksTo(64)));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

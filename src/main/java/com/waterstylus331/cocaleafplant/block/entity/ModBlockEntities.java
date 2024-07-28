@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(MortarPestleBlockEntity::new,
                             ModBlocks.MORTAR_AND_PESTLE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<JuicerBlockEntity>> JUICER_BE =
+            BLOCK_ENTITIES.register("juicer_be", () ->
+                    BlockEntityType.Builder.of(JuicerBlockEntity::new,
+                            ModBlocks.JUICER.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

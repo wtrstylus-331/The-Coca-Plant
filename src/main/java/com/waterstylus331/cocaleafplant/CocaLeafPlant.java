@@ -64,7 +64,11 @@ public class CocaLeafPlant
     {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.PESTLE_OBJECT.get());
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModBlocks.MORTAR_AND_PESTLE.get());
+            event.accept(ModBlocks.JUICER.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
@@ -73,6 +77,11 @@ public class CocaLeafPlant
             event.accept(ModItems.DRIED_COCA_LEAF.get());
             event.accept(ModItems.BURNT_COCA_LEAF.get());
             event.accept(ModItems.COCA_PASTE.get());
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModItems.APPLE_JUICE.get());
+            event.accept(ModItems.CANE_JUICE.get());
         }
     }
 

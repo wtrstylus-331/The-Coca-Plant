@@ -15,7 +15,7 @@ public class CreativeTab {
 
     public static final RegistryObject<CreativeModeTab> MAIN_TAB = TABS.register("mod_tab",
             () -> CreativeModeTab.builder().title(Component.translatable("creativetab.mod_tab"))
-                    .icon(() -> new ItemStack(ModItems.DRIED_COCA_LEAF.get()))
+                    .icon(() -> new ItemStack(ModItems.TAB_ICON.get()))
                     .displayItems((pParameter, pOutput) -> {
                         pOutput.accept(new ItemStack(ModItems.COCA_SEEDS.get()));
                         pOutput.accept(new ItemStack(ModItems.COCA_LEAF.get()));
@@ -24,6 +24,7 @@ public class CreativeTab {
                         pOutput.accept(new ItemStack(ModItems.COCA_PASTE.get()));
                         pOutput.accept(new ItemStack(ModItems.PESTLE_OBJECT.get()));
                         pOutput.accept(new ItemStack(ModItems.CANE_JUICE.get()));
+                        pOutput.accept(new ItemStack(ModItems.APPLE_JUICE.get()));
 
                         pOutput.accept(new ItemStack(ModBlocks.MORTAR_AND_PESTLE.get()));
                         pOutput.accept(new ItemStack(ModBlocks.JUICER.get()));

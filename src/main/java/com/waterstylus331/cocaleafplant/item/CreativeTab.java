@@ -26,6 +26,7 @@ public class CreativeTab {
                         pOutput.accept(new ItemStack(ModItems.CANE_JUICE.get()));
 
                         pOutput.accept(new ItemStack(ModBlocks.MORTAR_AND_PESTLE.get()));
+                        pOutput.accept(new ItemStack(ModBlocks.JUICER.get()));
                     })
                     .build());
 

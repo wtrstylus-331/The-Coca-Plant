@@ -123,7 +123,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
         pTag.putInt("mortar.progress", progress);
-        pTag.putInt("mortar.pasteProduced", progress);
+        pTag.putInt("mortar.pasteProduced", pasteProduced);
         pTag.putInt("mortar.pestleUsed", pestleUsed);
 
         super.saveAdditional(pTag);

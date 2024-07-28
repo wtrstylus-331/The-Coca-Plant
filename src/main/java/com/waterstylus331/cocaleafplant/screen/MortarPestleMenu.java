@@ -18,7 +18,7 @@ public class MortarPestleMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public MortarPestleMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(3));
     }
 
     public MortarPestleMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {

@@ -15,6 +15,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> MORTAR_USED = SOUND_EVENTS.register("mortar_used",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(CocaLeafPlant.MODID, "mortar_used")));
 
+    public static final RegistryObject<SoundEvent> JUICER_USED = SOUND_EVENTS.register("juicer_used",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(CocaLeafPlant.MODID, "juicer_used")));
+
     public static void register(IEventBus bus) {
         SOUND_EVENTS.register(bus);
     }

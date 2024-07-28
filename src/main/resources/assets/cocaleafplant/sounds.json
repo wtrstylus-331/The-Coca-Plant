@@ -4,5 +4,11 @@
     "sounds": [
       "cocaleafplant:mortar_used"
     ]
+  },
+  "juicer_used": {
+    "subtitles": "sounds.cocaleafplant.juicer_used",
+    "sounds": [
+      "cocaleafplant:juicer_used"
+    ]
   }
 }

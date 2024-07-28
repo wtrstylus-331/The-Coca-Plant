@@ -10,7 +10,10 @@
   "item.cocaleafplant.cane_juice": "Cane Juice",
 
   "block.cocaleafplant.mortar": "Mortar",
+  "block.cocaleafplant.juicer": "Juicer",
+
   "sounds.cocaleafplant.mortar_used": "Mortar And Pestle Used",
+  "sounds.cocaleafplant.juicer_used": "Juicer Running",
 
   "creativetab.mod_tab": "The Coca Plant"
 }

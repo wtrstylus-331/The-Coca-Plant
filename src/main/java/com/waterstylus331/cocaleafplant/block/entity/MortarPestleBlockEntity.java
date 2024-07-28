@@ -216,7 +216,7 @@ public class MortarPestleBlockEntity extends BlockEntity implements MenuProvider
             this.itemHandler.setStackInSlot(BUCKET_SLOT, new ItemStack(Items.BUCKET));
 
             pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(),
-                    SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1f, 1f, 0);
+                    SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 0.5f, 1f, 0);
 
             resetPasteProduced();
         }

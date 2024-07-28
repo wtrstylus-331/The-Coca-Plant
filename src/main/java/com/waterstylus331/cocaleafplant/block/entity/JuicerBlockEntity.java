@@ -1,5 +1,6 @@
 package com.waterstylus331.cocaleafplant.block.entity;
 
+import com.mojang.logging.LogUtils;
 import com.waterstylus331.cocaleafplant.recipe.JuicerRecipe;
 import com.waterstylus331.cocaleafplant.recipe.MortarPestleRecipe;
 import com.waterstylus331.cocaleafplant.screen.JuicerMenu;
@@ -190,6 +191,10 @@ public class JuicerBlockEntity extends BlockEntity implements MenuProvider {
             return false;
         }
 
+        if (this.itemHandler.getStackInSlot(0).getCount() < 2) {
+            return false;
+        }
+
         ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
 
         return hasBottle && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
@@ -203,7 +208,7 @@ public class JuicerBlockEntity extends BlockEntity implements MenuProvider {
     private void craftItem(Level pLevel1, BlockPos pPos) {
         Optional<JuicerRecipe> recipe = getRecipe();
         ItemStack result = recipe.get().getResultItem(null);
-        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT, 2, false);
         this.itemHandler.extractItem(BOTTLE_SLOT, 1, false);
 
         if (hasProducedMaxJuice()) {
@@ -211,7 +216,7 @@ public class JuicerBlockEntity extends BlockEntity implements MenuProvider {
             this.itemHandler.setStackInSlot(BUCKET_SLOT, new ItemStack(Items.BUCKET));
 
             pLevel1.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(),
-                    SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1f, 1f, 0);
+                    SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 0.5f, 1f, 0);
 
             resetJuiceProduced();
         }

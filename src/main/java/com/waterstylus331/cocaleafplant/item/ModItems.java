@@ -2,7 +2,6 @@ package com.waterstylus331.cocaleafplant.item;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
-import net.minecraft.world.item.BottleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,6 +32,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> COCA_PASTE = ITEMS.register("coca_paste",
             () -> new Item(new Item.Properties().stacksTo(64)));
+
+    public static final RegistryObject<Item> CANE_JUICE = ITEMS.register("cane_juice",
+            () -> new CaneJuiceItem(new Item.Properties().stacksTo(64)));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

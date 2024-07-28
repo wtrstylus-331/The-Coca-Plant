@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "cocaleafplant:mortar_pestle"
+          "name": "cocaleafplant:juicer"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "cocaleafplant:blocks/mortar_pestle"
+  "random_sequence": "cocaleafplant:blocks/juicer"
 }

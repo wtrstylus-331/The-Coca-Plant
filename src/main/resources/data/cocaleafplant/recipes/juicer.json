@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "juicer",
+  "pattern": [
+    "###",
+    "ABA",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stone_slab"
+    },
+    "X": {
+      "item": "minecraft:stone"
+    },
+    "A": {
+      "item": "minecraft:glass"
+    },
+    "B": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "cocaleafplant:juicer",
+    "count": 1
+  }
+}

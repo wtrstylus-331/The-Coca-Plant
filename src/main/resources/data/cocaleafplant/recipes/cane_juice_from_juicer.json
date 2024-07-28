@@ -1,0 +1,15 @@
+{
+  "type": "cocaleafplant:juicer",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar_cane"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "cocaleafplant:cane_juice"
+  }
+}

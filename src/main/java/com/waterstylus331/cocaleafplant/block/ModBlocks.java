@@ -23,6 +23,9 @@ public class ModBlocks {
     public static final RegistryObject<Block> MORTAR_AND_PESTLE = registerBlock("mortar",
             () -> new MortarPestleBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
+    public static final RegistryObject<Block> JUICER = registerBlock("juicer",
+            () -> new JuicerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

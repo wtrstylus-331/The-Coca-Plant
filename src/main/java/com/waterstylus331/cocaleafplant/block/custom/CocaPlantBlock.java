@@ -1,4 +1,4 @@
-package com.waterstylus331.cocaleafplant.block;
+package com.waterstylus331.cocaleafplant.block.custom;
 
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.world.level.ItemLike;

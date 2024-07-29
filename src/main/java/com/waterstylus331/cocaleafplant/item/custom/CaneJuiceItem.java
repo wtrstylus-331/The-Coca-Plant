@@ -1,4 +1,4 @@
-package com.waterstylus331.cocaleafplant.item;
+package com.waterstylus331.cocaleafplant.item.custom;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -10,8 +10,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
-public class AppleJuiceItem extends HoneyBottleItem {
-    public AppleJuiceItem(Properties properties) {
+public class CaneJuiceItem extends HoneyBottleItem {
+    public CaneJuiceItem(Properties properties) {
         super(properties);
     }
 
@@ -32,16 +32,20 @@ public class AppleJuiceItem extends HoneyBottleItem {
 
     @Override
     public SoundEvent getDrinkingSound() {
-        return SoundEvents.GENERIC_DRINK;
+        return SoundEvents.HONEY_DRINK;
     }
 
     @Override
     public SoundEvent getEatingSound() {
-        return SoundEvents.GENERIC_DRINK;
+        return SoundEvents.HONEY_DRINK;
     }
 
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
+        if (!level.isClientSide) {
+            entity.removeEffect(MobEffects.CONFUSION);
+        }
+
         if (entity instanceof Player player) {
             if (!player.getAbilities().instabuild) {
                 itemStack.shrink(1);

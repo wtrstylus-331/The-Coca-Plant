@@ -22,6 +22,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(JuicerBlockEntity::new,
                             ModBlocks.JUICER.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<FermentingBarrelBlockEntity>> FERMENTING_BARREL_BE =
+            BLOCK_ENTITIES.register("fermenting_barrel_be", () ->
+                    BlockEntityType.Builder.of(FermentingBarrelBlockEntity::new,
+                            ModBlocks.FERMENTING_BARREL.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

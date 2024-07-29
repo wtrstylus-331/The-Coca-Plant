@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "cocaleafplant:block/juicer",
+      "y": 90
+    },
+    "facing=north": {
       "model": "cocaleafplant:block/juicer"
+    },
+    "facing=south": {
+      "model": "cocaleafplant:block/juicer",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cocaleafplant:block/juicer",
+      "y": 270
     }
   }
 }

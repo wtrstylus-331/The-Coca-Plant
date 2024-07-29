@@ -1,4 +1,4 @@
-package com.waterstylus331.cocaleafplant.block;
+package com.waterstylus331.cocaleafplant.block.custom;
 
 import com.mojang.logging.LogUtils;
 import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;

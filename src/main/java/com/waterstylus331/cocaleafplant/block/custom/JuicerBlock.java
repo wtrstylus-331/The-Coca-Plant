@@ -1,14 +1,16 @@
-package com.waterstylus331.cocaleafplant.block;
+package com.waterstylus331.cocaleafplant.block.custom;
 
 import com.waterstylus331.cocaleafplant.block.entity.JuicerBlockEntity;
 import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
 import com.waterstylus331.cocaleafplant.block.entity.MortarPestleBlockEntity;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -18,6 +20,9 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -26,9 +31,22 @@ import org.jetbrains.annotations.Nullable;
 
 public class JuicerBlock extends BaseEntityBlock {
     public static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 12, 12);
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public JuicerBlock(Properties properties) {
         super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> stateBuilder) {
+        stateBuilder.add(FACING);
+    }
+
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext placeContext) {
+        return this.defaultBlockState().setValue(FACING, placeContext.getHorizontalDirection().getOpposite());
     }
 
     @Override
@@ -45,8 +63,8 @@ public class JuicerBlock extends BaseEntityBlock {
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof MortarPestleBlockEntity) {
-                ((MortarPestleBlockEntity) blockEntity).drops();
+            if (blockEntity instanceof JuicerBlockEntity) {
+                ((JuicerBlockEntity) blockEntity).drops();
             }
         }
 

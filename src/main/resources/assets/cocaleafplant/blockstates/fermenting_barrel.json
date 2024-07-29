@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cocaleafplant:block/fermenting_barrel",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cocaleafplant:block/fermenting_barrel"
+    },
+    "facing=south": {
+      "model": "cocaleafplant:block/fermenting_barrel",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cocaleafplant:block/fermenting_barrel",
+      "y": 270
+    }
+  }
+}

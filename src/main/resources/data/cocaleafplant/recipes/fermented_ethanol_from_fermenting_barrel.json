@@ -1,0 +1,12 @@
+{
+  "type": "cocaleafplant:fermenting_barrel",
+  "ingredients": [
+    {
+      "item": "cocaleafplant:cane_juice"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "cocaleafplant:fermented_ethanol"
+  }
+}

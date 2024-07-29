@@ -6,6 +6,7 @@ import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
 import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.recipe.ModRecipes;
+import com.waterstylus331.cocaleafplant.screen.FermentingBarrelScreen;
 import com.waterstylus331.cocaleafplant.screen.JuicerScreen;
 import com.waterstylus331.cocaleafplant.screen.ModMenuTypes;
 import com.waterstylus331.cocaleafplant.screen.MortarPestleScreen;
@@ -100,6 +101,7 @@ public class CocaLeafPlant
         {
             MenuScreens.register(ModMenuTypes.MORTAR_PESTLE_MENU.get(), MortarPestleScreen::new);
             MenuScreens.register(ModMenuTypes.JUICER_MENU.get(), JuicerScreen::new);
+            MenuScreens.register(ModMenuTypes.FERMENTING_BARREL_MENU.get(), FermentingBarrelScreen::new);
         }
     }
 }

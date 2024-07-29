@@ -25,9 +25,12 @@ public class CreativeTab {
                         pOutput.accept(new ItemStack(ModItems.PESTLE_OBJECT.get()));
                         pOutput.accept(new ItemStack(ModItems.CANE_JUICE.get()));
                         pOutput.accept(new ItemStack(ModItems.APPLE_JUICE.get()));
+                        pOutput.accept(new ItemStack(ModItems.FERMENTED_ETHANOL.get()));
+                        pOutput.accept(new ItemStack(ModItems.ETHANOL_BOTTLE.get()));
 
                         pOutput.accept(new ItemStack(ModBlocks.MORTAR_AND_PESTLE.get()));
                         pOutput.accept(new ItemStack(ModBlocks.JUICER.get()));
+                        pOutput.accept(new ItemStack(ModBlocks.FERMENTING_BARREL.get()));
                     })
                     .build());
 

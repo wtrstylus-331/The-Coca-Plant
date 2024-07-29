@@ -1,6 +1,10 @@
 package com.waterstylus331.cocaleafplant.block;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
+import com.waterstylus331.cocaleafplant.block.custom.CocaPlantBlock;
+import com.waterstylus331.cocaleafplant.block.custom.FermentingBarrelBlock;
+import com.waterstylus331.cocaleafplant.block.custom.JuicerBlock;
+import com.waterstylus331.cocaleafplant.block.custom.MortarPestleBlock;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -25,6 +29,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> JUICER = registerBlock("juicer",
             () -> new JuicerBlock(BlockBehaviour.Properties.copy(Blocks.COBBLED_DEEPSLATE).noOcclusion()));
+
+    public static final RegistryObject<Block> FERMENTING_BARREL = registerBlock("fermenting_barrel",
+            () -> new FermentingBarrelBlock(BlockBehaviour.Properties.copy(Blocks.BARREL).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

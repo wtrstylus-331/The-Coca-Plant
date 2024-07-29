@@ -9,9 +9,12 @@
   "item.cocaleafplant.pestle": "Pestle",
   "item.cocaleafplant.cane_juice": "Cane Juice",
   "item.cocaleafplant.apple_juice": "Apple Juice",
+  "item.cocaleafplant.fermented_ethanol": "Fermented Ethanol Bottle",
+  "item.cocaleafplant.ethanol_bottle": "Ethanol Bottle",
 
   "block.cocaleafplant.mortar": "Mortar",
   "block.cocaleafplant.juicer": "Juicer",
+  "block.cocaleafplant.fermenting_barrel": "Fermenting Barrel",
 
   "sounds.cocaleafplant.mortar_used": "Mortar And Pestle Used",
   "sounds.cocaleafplant.juicer_used": "Juicer Running",

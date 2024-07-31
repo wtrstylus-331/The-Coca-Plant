@@ -27,6 +27,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(FermentingBarrelBlockEntity::new,
                             ModBlocks.FERMENTING_BARREL.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<RefluxStillBlockEntity>> REFLUX_STILL_BE =
+            BLOCK_ENTITIES.register("reflux_still_be", () ->
+                    BlockEntityType.Builder.of(RefluxStillBlockEntity::new,
+                            ModBlocks.REFLUX_STILL.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

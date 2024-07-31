@@ -2,7 +2,7 @@
   <img alt="logo" src="https://i.imgur.com/g1gjvNo.png" width="400"></img>
 </p>
 
-<p>The Coca Plant adds a very interesting new plant, which can be harvested and refined into a widely known narcotic (its obvious, maybe).</p>
+<p>The Coca Plant adds a very interesting new plant, which can be harvested and refined into a widely known narcotic (it's obvious, maybe).</p>
 <p>There are are a series of blocks to aid in the process of producing such narcotic, leaning towards the more "realistic" side of things.
   This mod isn't just about one item, its the adventure of discovering what the mere coca plant is capable of through various processes to make it.
 </p>

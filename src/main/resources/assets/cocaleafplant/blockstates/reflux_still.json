@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "cocaleafplant:block/reflux_still",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "cocaleafplant:block/reflux_still"
+    },
+    "facing=south": {
+      "model": "cocaleafplant:block/reflux_still",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "cocaleafplant:block/reflux_still",
+      "y": 270
+    }
+  }
+}

@@ -1,10 +1,7 @@
 package com.waterstylus331.cocaleafplant.block.entity;
 
-import com.mojang.logging.LogUtils;
 import com.waterstylus331.cocaleafplant.recipe.JuicerRecipe;
-import com.waterstylus331.cocaleafplant.recipe.MortarPestleRecipe;
-import com.waterstylus331.cocaleafplant.screen.JuicerMenu;
-import com.waterstylus331.cocaleafplant.screen.MortarPestleMenu;
+import com.waterstylus331.cocaleafplant.screen.custom.JuicerMenu;
 import com.waterstylus331.cocaleafplant.sounds.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,7 +21,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;

@@ -18,6 +18,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> JUICER_USED = SOUND_EVENTS.register("juicer_used",
             () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(CocaLeafPlant.MODID, "juicer_used")));
 
+    public static final RegistryObject<SoundEvent> REFLUX_STILL_USED = SOUND_EVENTS.register("reflux_still_used",
+            () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(CocaLeafPlant.MODID, "reflux_still_used")));
+
     public static void register(IEventBus bus) {
         SOUND_EVENTS.register(bus);
     }

@@ -10,5 +10,11 @@
     "sounds": [
       "cocaleafplant:juicer_used"
     ]
+  },
+  "reflux_still_used": {
+    "subtitles": "sounds.cocaleafplant.reflux_still_used",
+    "sounds": [
+      "cocaleafplant:reflux_still_used"
+    ]
   }
 }

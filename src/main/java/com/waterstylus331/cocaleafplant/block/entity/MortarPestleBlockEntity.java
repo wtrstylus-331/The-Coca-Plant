@@ -1,8 +1,7 @@
 package com.waterstylus331.cocaleafplant.block.entity;
 
-import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.recipe.MortarPestleRecipe;
-import com.waterstylus331.cocaleafplant.screen.MortarPestleMenu;
+import com.waterstylus331.cocaleafplant.screen.custom.MortarPestleMenu;
 import com.waterstylus331.cocaleafplant.sounds.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

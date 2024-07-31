@@ -15,9 +15,11 @@
   "block.cocaleafplant.mortar": "Mortar",
   "block.cocaleafplant.juicer": "Juicer",
   "block.cocaleafplant.fermenting_barrel": "Fermenting Barrel",
+  "block.cocaleafplant.reflux_still": "Reflux Still",
 
   "sounds.cocaleafplant.mortar_used": "Mortar And Pestle Used",
   "sounds.cocaleafplant.juicer_used": "Juicer Running",
+  "sounds.cocaleafplant.reflux_still_used": "Distillation Complete",
 
   "creativetab.mod_tab": "The Coca Plant"
 }

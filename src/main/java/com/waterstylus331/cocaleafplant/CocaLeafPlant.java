@@ -6,15 +6,14 @@ import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
 import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.recipe.ModRecipes;
-import com.waterstylus331.cocaleafplant.screen.FermentingBarrelScreen;
-import com.waterstylus331.cocaleafplant.screen.JuicerScreen;
+import com.waterstylus331.cocaleafplant.screen.custom.FermentingBarrelScreen;
+import com.waterstylus331.cocaleafplant.screen.custom.JuicerScreen;
 import com.waterstylus331.cocaleafplant.screen.ModMenuTypes;
-import com.waterstylus331.cocaleafplant.screen.MortarPestleScreen;
+import com.waterstylus331.cocaleafplant.screen.custom.MortarPestleScreen;
+import com.waterstylus331.cocaleafplant.screen.custom.RefluxStillScreen;
 import com.waterstylus331.cocaleafplant.sounds.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -25,7 +24,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -58,7 +56,7 @@ public class CocaLeafPlant
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
-        LOGGER.info("HELLO FROM COMMON SETUP");
+        LOGGER.info("Common setup agrees with the coca plant.");
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
@@ -70,6 +68,7 @@ public class CocaLeafPlant
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(ModBlocks.MORTAR_AND_PESTLE.get());
             event.accept(ModBlocks.JUICER.get());
+            event.accept(ModBlocks.FERMENTING_BARREL.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
@@ -78,18 +77,20 @@ public class CocaLeafPlant
             event.accept(ModItems.DRIED_COCA_LEAF.get());
             event.accept(ModItems.BURNT_COCA_LEAF.get());
             event.accept(ModItems.COCA_PASTE.get());
+            event.accept(ModItems.FERMENTED_ETHANOL.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(ModItems.APPLE_JUICE.get());
             event.accept(ModItems.CANE_JUICE.get());
+            event.accept(ModItems.ETHANOL_BOTTLE.get());
         }
     }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event)
     {
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("Lets make some stuff...");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -102,6 +103,7 @@ public class CocaLeafPlant
             MenuScreens.register(ModMenuTypes.MORTAR_PESTLE_MENU.get(), MortarPestleScreen::new);
             MenuScreens.register(ModMenuTypes.JUICER_MENU.get(), JuicerScreen::new);
             MenuScreens.register(ModMenuTypes.FERMENTING_BARREL_MENU.get(), FermentingBarrelScreen::new);
+            MenuScreens.register(ModMenuTypes.REFLUX_STILL_MENU.get(), RefluxStillScreen::new);
         }
     }
 }

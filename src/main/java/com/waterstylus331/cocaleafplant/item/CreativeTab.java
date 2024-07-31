@@ -31,6 +31,7 @@ public class CreativeTab {
                         pOutput.accept(new ItemStack(ModBlocks.MORTAR_AND_PESTLE.get()));
                         pOutput.accept(new ItemStack(ModBlocks.JUICER.get()));
                         pOutput.accept(new ItemStack(ModBlocks.FERMENTING_BARREL.get()));
+                        pOutput.accept(new ItemStack(ModBlocks.REFLUX_STILL.get()));
                     })
                     .build());
 

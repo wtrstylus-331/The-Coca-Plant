@@ -1,16 +1,11 @@
 package com.waterstylus331.cocaleafplant.block.entity;
 
 import com.waterstylus331.cocaleafplant.recipe.FermentingBarrelRecipe;
-import com.waterstylus331.cocaleafplant.recipe.JuicerRecipe;
-import com.waterstylus331.cocaleafplant.screen.FermentingBarrelMenu;
-import com.waterstylus331.cocaleafplant.screen.JuicerMenu;
-import com.waterstylus331.cocaleafplant.sounds.ModSounds;
+import com.waterstylus331.cocaleafplant.screen.custom.FermentingBarrelMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -20,7 +15,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -44,7 +38,7 @@ public class FermentingBarrelBlockEntity extends BlockEntity implements MenuProv
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 180;
+    private int maxProgress = 480;
 
     public FermentingBarrelBlockEntity(BlockPos blockPos, BlockState state) {
         super(ModBlockEntities.FERMENTING_BARREL_BE.get(), blockPos, state);

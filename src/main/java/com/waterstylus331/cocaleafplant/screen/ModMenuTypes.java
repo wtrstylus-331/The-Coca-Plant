@@ -1,6 +1,10 @@
 package com.waterstylus331.cocaleafplant.screen;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
+import com.waterstylus331.cocaleafplant.screen.custom.FermentingBarrelMenu;
+import com.waterstylus331.cocaleafplant.screen.custom.JuicerMenu;
+import com.waterstylus331.cocaleafplant.screen.custom.MortarPestleMenu;
+import com.waterstylus331.cocaleafplant.screen.custom.RefluxStillMenu;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -23,6 +27,8 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<FermentingBarrelMenu>> FERMENTING_BARREL_MENU =
             registerMenuType("fermenting_barrel_menu", FermentingBarrelMenu::new);
 
+    public static final RegistryObject<MenuType<RefluxStillMenu>> REFLUX_STILL_MENU =
+            registerMenuType("reflux_still_menu", RefluxStillMenu::new);
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

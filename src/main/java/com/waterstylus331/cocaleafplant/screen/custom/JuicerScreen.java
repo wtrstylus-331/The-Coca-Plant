@@ -1,8 +1,7 @@
-package com.waterstylus331.cocaleafplant.screen;
+package com.waterstylus331.cocaleafplant.screen.custom;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
-import com.waterstylus331.cocaleafplant.block.entity.FermentingBarrelBlockEntity;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -10,18 +9,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class FermentingBarrelScreen extends AbstractContainerScreen<FermentingBarrelMenu> {
+public class JuicerScreen extends AbstractContainerScreen<JuicerMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(CocaLeafPlant.MODID, "textures/gui/fermenting_barrel_gui.png");
+            new ResourceLocation(CocaLeafPlant.MODID, "textures/gui/juicer_gui.png");
 
-    public FermentingBarrelScreen(FermentingBarrelMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+    public JuicerScreen(JuicerMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
 
     @Override
     protected void init() {
         super.init();
-        this.titleLabelY = 10000;
         this.inventoryLabelY = 10000;
     }
 
@@ -40,7 +38,7 @@ public class FermentingBarrelScreen extends AbstractContainerScreen<FermentingBa
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 67, y + 39, 176, 0, menu.getScaledProgress(), 8);
+            guiGraphics.blit(TEXTURE, x + 80, y + 31, 176, 0, menu.getScaledProgress(), 8);
         }
     }
 

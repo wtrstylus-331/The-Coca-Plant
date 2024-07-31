@@ -1,8 +1,9 @@
-package com.waterstylus331.cocaleafplant.screen;
+package com.waterstylus331.cocaleafplant.screen.custom;
 
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
 import com.waterstylus331.cocaleafplant.block.entity.JuicerBlockEntity;
 import com.waterstylus331.cocaleafplant.block.entity.MortarPestleBlockEntity;
+import com.waterstylus331.cocaleafplant.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

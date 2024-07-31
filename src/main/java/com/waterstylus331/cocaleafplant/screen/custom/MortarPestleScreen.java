@@ -1,4 +1,4 @@
-package com.waterstylus331.cocaleafplant.screen;
+package com.waterstylus331.cocaleafplant.screen.custom;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;

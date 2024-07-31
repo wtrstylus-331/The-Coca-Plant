@@ -20,6 +20,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<FermentingBarrelRecipe>> FERMENTING_BARREL_SERIALIZER =
             SERIALIZERS.register("fermenting_barrel", () -> FermentingBarrelRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<RefluxStillRecipe>> REFLUX_STILL_SERIALIZER =
+            SERIALIZERS.register("reflux_still", () -> RefluxStillRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus bus) {
         SERIALIZERS.register(bus);
     }

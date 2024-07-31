@@ -1,0 +1,15 @@
+{
+  "type": "cocaleafplant:reflux_still",
+  "ingredients": [
+    {
+      "item": "cocaleafplant:fermented_ethanol"
+    },
+    {
+      "item": "minecraft:charcoal"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "item": "cocaleafplant:ethanol_bottle"
+  }
+}

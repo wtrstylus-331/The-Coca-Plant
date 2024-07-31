@@ -22,5 +22,5 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/wtrstylus-331/random_mobs_spawning/tree/1.21build"><img alt="1.21" src="https://img.shields.io/badge/Current Version-1.21-red"></a>
+  <a href="https://github.com/wtrstylus-331/random_mobs_spawning/tree/1.21build"><img alt="1.21" src="https://img.shields.io/badge/Current Version-1.20.1-red"></a>
 </p>

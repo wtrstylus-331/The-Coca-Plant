@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "reflux_still",
+  "pattern": [
+    "PPP",
+    "# F",
+    "S X"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:copper_ingot"
+    },
+    "S": {
+      "item": "minecraft:furnace"
+    },
+    "X": {
+      "item": "minecraft:bucket"
+    },
+    "#": {
+      "item": "minecraft:smooth_stone"
+    },
+    "F": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "result": {
+    "item": "cocaleafplant:reflux_still",
+    "count": 1
+  }
+}

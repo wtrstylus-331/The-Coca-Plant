@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "fermenting_barrel",
+  "pattern": [
+    "PPP",
+    "S S",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "item": "minecraft:stone_brick_slab"
+    }
+  },
+  "result": {
+    "item": "cocaleafplant:fermenting_barrel",
+    "count": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "cocaleafplant:add_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/village/village_plains_house"
+    }
+  ],
+  "item": "cocaleafplant:coca_seeds",
+  "count": {
+    "type": "minecraft:uniform",
+    "max": 5.0,
+    "min": 1.0
+  }
+}

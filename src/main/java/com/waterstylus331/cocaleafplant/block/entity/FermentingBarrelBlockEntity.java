@@ -38,7 +38,7 @@ public class FermentingBarrelBlockEntity extends BlockEntity implements MenuProv
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 480;
+    private int maxProgress = 900;
 
     public FermentingBarrelBlockEntity(BlockPos blockPos, BlockState state) {
         super(ModBlockEntities.FERMENTING_BARREL_BE.get(), blockPos, state);
@@ -159,6 +159,7 @@ public class FermentingBarrelBlockEntity extends BlockEntity implements MenuProv
 
     private boolean hasRecipe() {
         Optional<FermentingBarrelRecipe> recipe = getRecipe();
+        boolean validCount = this.itemHandler.getStackInSlot(INPUT_SLOT).getCount() == 64;
 
         if (recipe.isEmpty()) {
             return false;
@@ -166,16 +167,16 @@ public class FermentingBarrelBlockEntity extends BlockEntity implements MenuProv
 
         ItemStack result = recipe.get().getResultItem(getLevel().registryAccess());
 
-        return canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        return validCount && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private void craftItem(Level pLevel1, BlockPos pPos) {
         Optional<FermentingBarrelRecipe> recipe = getRecipe();
         ItemStack result = recipe.get().getResultItem(null);
-        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        this.itemHandler.extractItem(INPUT_SLOT, 64, false);
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + 64));
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

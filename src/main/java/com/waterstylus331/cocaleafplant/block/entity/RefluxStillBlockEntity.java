@@ -47,7 +47,7 @@ public class RefluxStillBlockEntity extends BlockEntity implements MenuProvider 
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 240;
+    private int maxProgress = 320;
     private int fuelUsed = 0;
 
     public RefluxStillBlockEntity(BlockPos blockPos, BlockState state) {

@@ -44,7 +44,8 @@ public class EthanolItem extends HoneyBottleItem {
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity entity) {
         if (!level.isClientSide) {
-            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 180, 2));
+            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 240, 2));
+            entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 1));
         }
 
         if (entity instanceof Player player) {

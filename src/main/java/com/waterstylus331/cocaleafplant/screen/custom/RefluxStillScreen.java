@@ -20,7 +20,6 @@ public class RefluxStillScreen extends AbstractContainerScreen<RefluxStillMenu> 
     @Override
     protected void init() {
         super.init();
-        this.titleLabelY = 10000;
         this.inventoryLabelY = 10000;
     }
 

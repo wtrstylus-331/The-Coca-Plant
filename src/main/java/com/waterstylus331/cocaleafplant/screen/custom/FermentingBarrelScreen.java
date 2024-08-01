@@ -20,8 +20,6 @@ public class FermentingBarrelScreen extends AbstractContainerScreen<FermentingBa
     @Override
     protected void init() {
         super.init();
-        this.titleLabelY = 10000;
-        this.inventoryLabelY = 10000;
     }
 
     @Override

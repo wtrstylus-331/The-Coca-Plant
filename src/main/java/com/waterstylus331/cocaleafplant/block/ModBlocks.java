@@ -2,11 +2,13 @@ package com.waterstylus331.cocaleafplant.block;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
 import com.waterstylus331.cocaleafplant.block.custom.*;
+import com.waterstylus331.cocaleafplant.fluids.ModFluids;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -32,6 +34,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> REFLUX_STILL = registerBlock("reflux_still",
             () -> new RefluxStillBlock(BlockBehaviour.Properties.copy(Blocks.BARREL).noOcclusion()));
+
+    public static final RegistryObject<LiquidBlock> ETHANOL_BLOCK = registerBlock("ethanol_block",
+            () -> new LiquidBlock(ModFluids.SOURCE_ETHANOL, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

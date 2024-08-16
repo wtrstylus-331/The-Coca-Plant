@@ -2,11 +2,14 @@ package com.waterstylus331.cocaleafplant.item;
 
 import com.waterstylus331.cocaleafplant.CocaLeafPlant;
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
+import com.waterstylus331.cocaleafplant.fluids.ModFluids;
 import com.waterstylus331.cocaleafplant.item.custom.AppleJuiceItem;
 import com.waterstylus331.cocaleafplant.item.custom.CaneJuiceItem;
 import com.waterstylus331.cocaleafplant.item.custom.EthanolItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -47,6 +50,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> ETHANOL_BOTTLE = ITEMS.register("ethanol_bottle",
             () -> new EthanolItem(new Item.Properties().stacksTo(64)));
+
+    public static final RegistryObject<Item> ETHANOL_BUCKET = ITEMS.register("ethanol_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_ETHANOL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

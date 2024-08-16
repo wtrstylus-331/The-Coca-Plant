@@ -187,7 +187,7 @@ public class JuicerBlockEntity extends BlockEntity implements MenuProvider {
             return false;
         }
 
-        if (this.itemHandler.getStackInSlot(0).getCount() < 2) {
+        if (this.itemHandler.getStackInSlot(INPUT_SLOT).getCount() < 2) {
             return false;
         }
 

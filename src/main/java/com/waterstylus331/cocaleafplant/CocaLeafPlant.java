@@ -3,6 +3,8 @@ package com.waterstylus331.cocaleafplant;
 import com.mojang.logging.LogUtils;
 import com.waterstylus331.cocaleafplant.block.ModBlocks;
 import com.waterstylus331.cocaleafplant.block.entity.ModBlockEntities;
+import com.waterstylus331.cocaleafplant.fluids.FluidTypes;
+import com.waterstylus331.cocaleafplant.fluids.ModFluids;
 import com.waterstylus331.cocaleafplant.item.CreativeTab;
 import com.waterstylus331.cocaleafplant.item.ModItems;
 import com.waterstylus331.cocaleafplant.loot.ModLootModifiers;
@@ -14,8 +16,12 @@ import com.waterstylus331.cocaleafplant.screen.custom.MortarPestleScreen;
 import com.waterstylus331.cocaleafplant.screen.custom.RefluxStillScreen;
 import com.waterstylus331.cocaleafplant.sounds.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.RenderTypeGroup;
+import net.minecraftforge.client.RenderTypeHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -50,6 +56,8 @@ public class CocaLeafPlant
         ModSounds.register(modEventBus);
         ModRecipes.register(modEventBus);
         ModLootModifiers.register(modEventBus);
+        ModFluids.register(modEventBus);
+        FluidTypes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -102,6 +110,11 @@ public class CocaLeafPlant
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+            event.enqueueWork(() -> {
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_ETHANOL.get(), RenderType.translucent());
+                ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_ETHANOL.get(), RenderType.translucent());
+            });
+
             MenuScreens.register(ModMenuTypes.MORTAR_PESTLE_MENU.get(), MortarPestleScreen::new);
             MenuScreens.register(ModMenuTypes.JUICER_MENU.get(), JuicerScreen::new);
             MenuScreens.register(ModMenuTypes.FERMENTING_BARREL_MENU.get(), FermentingBarrelScreen::new);
